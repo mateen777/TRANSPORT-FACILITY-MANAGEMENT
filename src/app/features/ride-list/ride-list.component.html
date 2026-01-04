@@ -1,0 +1,36 @@
+<div class="card large-card right-main-container h-100">
+    <h3 class="title">Available Rides</h3>
+    
+    <div class="filter-container">
+        <!-- <input placeholder="Your Emp ID" class="input-field" [(ngModel)]="employeeId" /> -->
+        <input type="time" class="input-field" [(ngModel)]="selectedTime" />
+        
+        <select class="input-field" [(ngModel)]="vehicleType">
+          <option value="All">All</option>
+          <option value="Bike">Bike</option>
+          <option value="Car">Car</option>
+        </select>
+    </div>
+    
+    <div class="rides-container">
+        @for (ride of filteredRides(); track ride.id) {
+            <app-ride-card [rideData]="ride" (buttonAction)="openDialog(ride.id,ride)"></app-ride-card>
+        }
+        @if (transportService.getTodayRides().length === 0) {
+            <div class="empty-msg">
+                <img src="assets/images/empty.png" alt="">
+                <p class="empty-msg-title">No rides available for today.</p>
+                <p class="empty-msg-summary">be the first one to add the ride.</p>
+            </div>
+        }
+
+        @if (transportService.getTodayRides().length > 0 && filteredRides().length === 0) {
+            <div class="empty-msg">
+                <img src="assets/images/empty.png" alt="">
+                <p class="empty-msg-title">No rides match your selected filters.</p>
+                <p class="empty-msg-summary">Try adjusting time or vehicle type.</p>
+            </div>
+        }
+    </div>
+
+</div>

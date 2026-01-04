@@ -1,0 +1,90 @@
+:host {
+    display: block;
+    margin: 10px;
+}
+
+.ride-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--background-elevation-2);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 .25rem 1.25rem #0000001a;
+    color: var(--text-primary);
+    // border: 2px solid #526ed3;
+
+    .emoji {
+        font-size: 4rem;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: -16px;
+    }
+
+    .ride-details {
+        flex-grow: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
+.pickup-drop {
+    display: flex;
+    align-items: center;
+}
+
+.btn-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+.primary-btn-sm {
+  --bg: var(--background-accent-1);
+  max-width: 100%;
+  height: 30px;
+  background: var(--bg);
+  color: var(--text-primary-on-accent-1);
+  appearance: none;
+  border: 0;
+  line-height: inherit;
+  text-decoration: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+  gap: 12px;
+  border-radius: 4px;
+  padding: 0 16px;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  font-size: 14px;
+
+  &:disabled {
+    cursor: initial;
+    opacity: .56;
+  }
+}
+
+.seats-low {
+  color: var(--status-warning);
+}
+
+.seats-full {
+  color: var(--status-negative); 
+}
+
+.mx6 {
+    margin: 0 6px;
+}

@@ -1,0 +1,26 @@
+<div>
+    <header class="dialog-header">
+        <h3 class="header-title">Available Rides</h3>
+        <button class="text-btn" (click)="dialogRef.close()">
+            @if (currentTheme == 'light') {
+                <img src="assets/icons/cross.svg" alt="">
+            }@else {
+                <img src="assets/icons/cross-white.svg" alt="">
+            }
+        </button>
+    </header>
+    <div class="dialog-content">
+        <div class="reset-shadow-margin">
+            <app-ride-card [rideData]="rideData" [showBtn]="false"></app-ride-card>
+        </div>
+
+        <label class="form-column-flex mb10">
+            <span class="field-label">Enter Your Employee ID</span>
+            <input type="text" class="input-field mb10" placeholder="Employee ID" [(ngModel)]="employeeId" />
+        </label>
+    </div>
+    <footer class="dialog-footer">
+        <button type="submit" class="secondary-btn-m" [disabled]="isDisabled" (click)="dialogRef.close()">Cancel</button>
+        <button type="submit" class="btn" [disabled]="isDisabled" (click)="dialogRef.close(employeeId)">Confirming Booking</button>
+    </footer>
+</div>

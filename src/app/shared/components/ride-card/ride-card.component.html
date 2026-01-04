@@ -1,0 +1,39 @@
+<div class="ride-card">
+    <span [innerHTML]="rideData.vehicleType == 'Bike' ? bikeEmoji : carEmoji" class="emoji">
+    </span>
+    <div class="ride-details">
+        <span>
+            <b>{{ rideData.vehicleType }}</b> - <b class="action-text">{{ rideData.vehicleNo }}</b>
+        </span>
+
+        <div class="pickup-drop">
+            <span>{{ rideData.pickupPoint }}</span>
+            @if (currentTheme == 'light') {
+                <img class="mx6" src="assets/icons/move-right.svg" alt="">
+            } @else {
+                <img class="mx6" src="assets/icons/move-right-white.svg" alt="">
+            }
+            <span>{{ rideData.destination }}</span>
+        </div>
+        <span>Time: <b>{{ rideData.time | time24to12 }}</b></span>
+        <span>Seats Left: 
+            <span [class.seats-low]="rideData.vacantSeats == 1"
+                [class.seats-full]="rideData.vacantSeats < 1"
+            >
+                {{ rideData.vacantSeats }}
+            </span>
+        </span> 
+
+        @if (showBtn) {
+            <div class="btn-container">
+                <button
+                    class="primary-btn-sm "
+                    (click)="this.buttonAction.emit(true);"
+                    [disabled]="isDisabled"
+                >
+                    {{rideData.vacantSeats == 0 ? 'Full' :'Book Ride'}}
+                </button>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,42 @@
+:host {
+  display: block;
+  background: var(--background-elevation-2);
+  border-radius: 10px;
+  padding: 16px;
+  max-width: 500px;
+  animation: custom-dialog-enter .2s ease;
+  width: 500px;
+}
+
+@keyframes custom-dialog-enter {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+.dialog-header {
+    display: flex;
+    align-items: center;
+    color: var(--text-primary);
+
+    .header-title {
+        flex-grow: 1;
+        margin: 0;
+    }
+
+    img {
+        flex-shrink: 0;
+
+    }
+}
+
+.dialog-footer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+}
