@@ -34,7 +34,7 @@ html, body {
       font-weight: 500;
     }
 
-    input,select {
+    .field {
       flex: 2;
     }
   }
@@ -169,7 +169,7 @@ input[type=number] {
 }
 
 .title {
-  margin: 0 0 1rem 0;
+  margin: 0;
 }
 
 .action-text {
@@ -232,17 +232,20 @@ input[type=number] {
 }
 
 .icon-small {
-    height: 44px;
-    width: 44px;
+    height: 40px;
+    width: 40px;
     border-radius: 100%;
-}
 
-.theme-btn {
-    position: absolute;
-    top: 12px;
-    right: 24px;
+    img {
+      height: 22px;
+      width: 22px;
+    }
 }
 
 .toast-overlay {
   pointer-events: none;
+}
+
+.error {
+  color: var(--status-negative);
 }

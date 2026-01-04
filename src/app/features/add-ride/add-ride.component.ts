@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { TransportService } from '../../core/services/transport.service';
 import { ThemeService } from '../../core/services/theme.service';
 import { ToastService } from '../../core/services/toast.service';
@@ -31,7 +31,7 @@ export class AddRideComponent {
       vehicleType: ['Car', Validators.required],
       vehicleNo: ['', Validators.required],
       vacantSeats: [1, [Validators.required, Validators.min(1)]],
-      time: ['', Validators.required],
+      time: ['', [Validators.required, this.futureTimeValidator()]],
       pickupPoint: ['', Validators.required],
       destination: ['', Validators.required]
     });
@@ -79,4 +79,27 @@ export class AddRideComponent {
   get currentTheme() {
     return this.themeService.currentTheme ;
   }
+
+  blockInvalidKeys(event: KeyboardEvent) {
+    const invalidKeys = ['-', '+', 'e', 'E'];
+
+    if (invalidKeys.includes(event.key)) {
+      event.preventDefault();
+    }
+  }
+
+  futureTimeValidator(): ValidatorFn {
+    return (control: AbstractControl) => {
+      if (!control.value) return null;
+
+      const [h, m] = control.value.split(':').map(Number);
+      const now = new Date();
+      const selected = new Date();
+      selected.setHours(h, m, 0, 0);
+
+      return selected < now ? { pastTime: true } : null;
+    };
+  }
+
+  
 }

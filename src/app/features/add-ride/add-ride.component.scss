@@ -3,3 +3,18 @@
     padding: 10px; 
     border-radius: 10px;
 }
+
+.add-ride-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+
+    .add-ride-btn {
+        height: 40px !important;
+        margin-left: auto;
+    }
+
+    .theme-btn {
+        margin-left: 10px;
+    }
+}

@@ -1,5 +1,5 @@
-<div class="card large-card right-main-container h-100">
-    <h3 class="title">Available Rides</h3>
+<div class="card medium-card right-main-container h-100">
+    <h3 class="ride-list-title">Available Rides</h3>
     
     <div class="filter-container">
         <!-- <input placeholder="Your Emp ID" class="input-field" [(ngModel)]="employeeId" /> -->
@@ -26,7 +26,7 @@
 
         @if (transportService.getTodayRides().length > 0 && filteredRides().length === 0) {
             <div class="empty-msg">
-                <img src="assets/images/empty.png" alt="">
+                <img src="assets/images/empty-2.png" alt="">
                 <p class="empty-msg-title">No rides match your selected filters.</p>
                 <p class="empty-msg-summary">Try adjusting time or vehicle type.</p>
             </div>

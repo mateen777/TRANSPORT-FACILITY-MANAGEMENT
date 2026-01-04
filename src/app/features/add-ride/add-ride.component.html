@@ -1,45 +1,92 @@
-<div class="card large-card h-100">
-    <h3 class="title ">Add Ride</h3>
-    <button class="icon-small theme-btn secondary-btn-m" (click)="toggleTheme()">
-        @if (currentTheme == 'dark') {
-        <img src="assets/icons/moon.svg" alt="">
-        }@else {
-        <img src="assets/icons/sun.svg" alt="">
-        }
-    </button>
-    <form [formGroup]="rideForm" (ngSubmit)="addRide()">
-        <input type="text" class="input-field mb10" placeholder="Employee ID" formControlName="employeeId" />
-
+<div class="card medium-card h-100">
+    <header class="add-ride-header">
+        <h3 class="title ">Add Ride</h3>
+        <button type="submit" class="btn add-ride-btn" [disabled]="rideForm.invalid" (click)="addRide()">Add Ride</button>
+        <button class="icon-small theme-btn secondary-btn-m" (click)="toggleTheme()">
+            @if (currentTheme == 'dark') {
+            <img src="assets/icons/moon.svg" alt="">
+            }@else {
+            <img src="assets/icons/sun.svg" alt="">
+            }
+        </button>
+    </header>
+    <form [formGroup]="rideForm">
+        <div class="mb10">
+            <input type="text" class="input-field" placeholder="Employee ID" formControlName="employeeId" />
+            @if (rideForm.get('employeeId')?.touched && rideForm.get('employeeId')?.invalid) {
+                <small class="error">This field is required</small>
+            }
+        </div>
         <div class="fields-container">
             <label class="form-row-flex">
                 <span class="field-label">Vehicle Type</span>
-                <select class="input-field" formControlName="vehicleType">
-                    <option value="Bike">Bike</option>
-                    <option value="Car">Car</option>
-                </select>
+                <div class="field">
+                    <select class="input-field" formControlName="vehicleType">
+                        <option value="Bike">Bike</option>
+                        <option value="Car">Car</option>
+                    </select>
+                </div>
             </label>
 
             <label class="form-row-flex">
                 <span class="field-label">Vehicle No</span>
-                <input type="text" class="input-field" placeholder="Vehicle No" formControlName="vehicleNo" />
+                <div class="field">
+                    <input type="text" class="input-field" placeholder="Vehicle No" formControlName="vehicleNo" />
+                    @if (rideForm.get('vehicleNo')?.touched && rideForm.get('vehicleNo')?.invalid) {
+                        <small class="error">This field is required</small>
+                    }
+                </div>
             </label>
             <label class="form-row-flex">
                 <span class="field-label">Vacant Seats</span>
-                <input type="number" class="input-field" [min]="1" placeholder="Vacant Seats" formControlName="vacantSeats" />
+                <div class="field">
+                    <input type="number" class="input-field" [min]="1" [max]="10" placeholder="Vacant Seats" formControlName="vacantSeats" (keydown)="blockInvalidKeys($event)" />
+                    @if (rideForm.get('vacantSeats')?.touched && rideForm.get('vacantSeats')?.invalid) {
+                        <small class="error">
+                            @if (rideForm.get('vacantSeats')?.hasError('required')) {
+                                This field is required
+                            }
+                            @if (rideForm.get('vacantSeats')?.hasError('min')) {
+                                The number of seats must be at least one.
+                            }
+                        </small>
+                    }
+                </div>
             </label>
             <label class="form-row-flex">
                 <span class="field-label">Time</span>
-                <input type="time" class="input-field" formControlName="time" />
+                <div class="field">
+                    <input type="time" class="input-field" formControlName="time" />
+                    @if (rideForm.get('time')?.touched && rideForm.get('time')?.invalid) {
+                        <small class="error">
+                            @if(rideForm.get('time')?.hasError('required')) {
+                                This field is required
+                            }
+                            @if(rideForm.get('time')?.hasError('pastTime')) {
+                                Please select a future time
+                            }
+                        </small>
+                    }
+                </div>
             </label>
             <label class="form-row-flex">
                 <span class="field-label">Pickup Point</span>
-                <input type="text" class="input-field" placeholder="Pickup Point" formControlName="pickupPoint" />
+                <div class="field">
+                    <input type="text" class="input-field" placeholder="Pickup Point" formControlName="pickupPoint" />
+                    @if (rideForm.get('pickupPoint')?.touched && rideForm.get('pickupPoint')?.invalid) {
+                        <small class="error">This field is required</small>
+                    }
+                </div>
             </label>
             <label class="form-row-flex">
                 <span class="field-label">Destination</span>
-                <input type="text" class="input-field" placeholder="Destination" formControlName="destination" />
+                <div class="field">
+                    <input type="text" class="input-field" placeholder="Destination" formControlName="destination" />
+                    @if (rideForm.get('destination')?.touched && rideForm.get('destination')?.invalid) {
+                        <small class="error">This field is required</small>
+                    }
+                </div>
             </label>
     </div>
-    <button type="submit" class="btn mt12 w-100" [disabled]="rideForm.invalid">Add Ride</button>
     </form>
 </div>

@@ -64,7 +64,7 @@ export class RideListComponent {
           }
           
           if (ride?.vacantSeats === 0) {
-            this.toastService.info("This ride is fully booked.")
+            this.toastService.error("No seats are available.")
             return;
           }
 
