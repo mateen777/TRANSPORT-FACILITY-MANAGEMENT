@@ -12,6 +12,10 @@ export class TransportService {
     this.rides.push(ride);
   }
 
+  getRides() {
+    return this.rides;
+  }
+
   getTodayRides() {
     const today = new Date().toISOString().split('T')[0];
     return this.rides.filter(r => r.createdDate === today);

@@ -1,0 +1,17 @@
+:host {
+    display: block;
+    height: 100%;
+}
+.container {
+    display: flex;
+    height: 100vh;
+    // background: var(--background-base);
+    padding: 2rem;
+    gap: 2rem;
+    overflow: auto;
+    position: relative;
+
+    .child {
+        flex: 1;
+    }
+}

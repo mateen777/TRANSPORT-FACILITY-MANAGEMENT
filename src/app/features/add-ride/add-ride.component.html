@@ -1,0 +1,45 @@
+<div class="card large-card h-100">
+    <h3 class="title ">Add Ride</h3>
+    <button class="icon-small theme-btn secondary-btn-m" (click)="toggleTheme()">
+        @if (currentTheme == 'dark') {
+        <img src="assets/icons/moon.svg" alt="">
+        }@else {
+        <img src="assets/icons/sun.svg" alt="">
+        }
+    </button>
+    <form [formGroup]="rideForm" (ngSubmit)="addRide()">
+        <input type="text" class="input-field mb10" placeholder="Employee ID" formControlName="employeeId" />
+
+        <div class="fields-container">
+            <label class="form-row-flex">
+                <span class="field-label">Vehicle Type</span>
+                <select class="input-field" formControlName="vehicleType">
+                    <option value="Bike">Bike</option>
+                    <option value="Car">Car</option>
+                </select>
+            </label>
+
+            <label class="form-row-flex">
+                <span class="field-label">Vehicle No</span>
+                <input type="text" class="input-field" placeholder="Vehicle No" formControlName="vehicleNo" />
+            </label>
+            <label class="form-row-flex">
+                <span class="field-label">Vacant Seats</span>
+                <input type="number" class="input-field" [min]="1" placeholder="Vacant Seats" formControlName="vacantSeats" />
+            </label>
+            <label class="form-row-flex">
+                <span class="field-label">Time</span>
+                <input type="time" class="input-field" formControlName="time" />
+            </label>
+            <label class="form-row-flex">
+                <span class="field-label">Pickup Point</span>
+                <input type="text" class="input-field" placeholder="Pickup Point" formControlName="pickupPoint" />
+            </label>
+            <label class="form-row-flex">
+                <span class="field-label">Destination</span>
+                <input type="text" class="input-field" placeholder="Destination" formControlName="destination" />
+            </label>
+    </div>
+    <button type="submit" class="btn mt12 w-100" [disabled]="rideForm.invalid">Add Ride</button>
+    </form>
+</div>

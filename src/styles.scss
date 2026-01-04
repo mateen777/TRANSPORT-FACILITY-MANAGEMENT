@@ -1,1 +1,248 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'assets/scss/theme';
+@import '@angular/cdk/overlay-prebuilt.css';
+
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;      
+    padding: 0;     
+    min-height: 100vh;
+    width: 100%;
+    background: var(--background-base);
+}
+
+  .form-row-flex {
+      display: flex; 
+      align-items: center; 
+      margin-bottom: 10px; 
+      flex-direction: row !important;
+      width: auto !important;
+      // color: var(--text-primary);
+      gap: .25rem;
+
+    .field-label {
+      flex: 1;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    input,select {
+      flex: 2;
+    }
+  }
+
+.field-label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.w-100 {
+  width: 100%;
+} 
+
+.h-100 {
+  height: 100%;
+} 
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mt12 {
+  margin-top: 12px;
+}
+
+.form-column-flex {
+  display: flex;
+  gap: .25rem;
+  flex-direction: column !important;
+  width: auto !important;
+  color: var(--text-primary);
+}
+
+
+.input-field {
+  --t-shadow: 0 .125rem .1875rem rgba(0, 0, 0, .1);
+    
+    background-color: var(--background-base);
+    color: var(--text-primary);
+    box-shadow: var(--t-shadow);
+    outline: 1px solid var(--border-normal);
+    outline-offset: -1px;
+    border-width: 0;
+    font-size: 16px;
+    width: 100%;
+    height: 44px;
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border-width: 0;
+    overscroll-behavior: none;
+    padding: 12px 16px;
+
+    transition-property: box-shadow, background-color, outline-color, border-color;
+    transition-duration: .3s;
+    transition-timing-function: ease-in-out;
+
+    &:focus {
+        box-shadow: none;
+        outline: .125rem solid var(--background-accent-1);
+        outline-offset: -.125rem;
+    }
+
+    &.ng-touched.ng-invalid {
+      outline-color: var(--status-negative);
+    }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.btn {
+  --bg: var(--background-accent-1);
+  max-width: 100%;
+  height: 44px;
+  background: var(--bg);
+  color: var(--text-primary-on-accent-1);
+  appearance: none;
+  border: 0;
+  line-height: inherit;
+  text-decoration: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+  gap: 12px;
+  border-radius: 10px;
+  padding: 0 16px;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+
+  &:disabled {
+    cursor: initial;
+    opacity: .56;
+  }
+}
+
+.card {
+  background: var(--background-elevation-2);
+  color: var(--text-primary);
+  box-shadow: 0 .25rem 1.25rem #0000001a;
+  position: relative;
+}
+
+.medium-card {
+  padding: .75rem;
+  border-radius: .75rem;
+  box-sizing: border-box;
+}
+
+.large-card {
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+}
+
+.title {
+  margin: 0 0 1rem 0;
+}
+
+.action-text {
+  color: var(--text-action);
+}
+
+.secondary-btn-m {
+  --bg: var(--background-neutral-1);;
+  max-width: 100%;
+  height: 44px;
+  background: var(--bg);
+  color: #4c66c3;
+  appearance: none;
+  border: 0;
+  line-height: inherit;
+  text-decoration: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+  gap: 12px;
+  border-radius: 10px;
+  padding: 0 16px;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+
+  &:disabled {
+    cursor: initial;
+    opacity: .56;
+  }
+}
+
+.text-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: initial;
+  }
+}
+
+.reset-shadow-margin {
+  app-ride-card {
+    margin: 0;
+
+    .ride-card {
+      box-shadow: none;
+    }
+  }
+}
+
+.icon-small {
+    height: 44px;
+    width: 44px;
+    border-radius: 100%;
+}
+
+.theme-btn {
+    position: absolute;
+    top: 12px;
+    right: 24px;
+}
+
+.toast-overlay {
+  pointer-events: none;
+}

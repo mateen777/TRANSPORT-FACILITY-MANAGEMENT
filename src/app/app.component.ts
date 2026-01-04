@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AddRideComponent } from "./features/add-ride/add-ride.component";
+import { RideListComponent } from "./features/ride-list/ride-list.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [AddRideComponent, RideListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
